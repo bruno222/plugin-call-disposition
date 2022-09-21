@@ -1,3 +1,15 @@
+# What
+
+This is a fork to update the source-code to Flex 2.0
+
+If you need to run this Plugin under Flex 1.x, go to branch `flex-1.x`.
+
+# How
+
+Create a task with these attributes, else the component won't render:
+
+`{"reasonsUnselected": ["Login error","Change personal details"], "reasonsSelected": ["Insufficient Funds", "Failed Payment"]}`
+
 # Your custom Twilio Flex Plugin
 
 Twilio Flex Plugins allow you to customize the appearance and behavior of [Twilio Flex](https://www.twilio.com/flex). If you want to learn more about the capabilities and how to use the API, check out our [Flex documentation](https://www.twilio.com/docs/flex).
@@ -11,7 +23,7 @@ Make sure you have [Node.js](https://nodejs.org) as well as [`npm`](https://npmj
 Afterwards, install the dependencies by running `npm install`:
 
 ```bash
-cd 
+cd
 
 # If you use npm
 npm install

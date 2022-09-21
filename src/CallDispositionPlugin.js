@@ -1,6 +1,6 @@
 import React from 'react';
 import { VERSION, Actions } from '@twilio/flex-ui';
-import { FlexPlugin } from 'flex-plugin';
+import { FlexPlugin } from '@twilio/flex-plugin';
 
 import CustomTaskListContainer from './components/CustomTaskList/CustomTaskList.Container';
 import reducers, { namespace } from './states';
@@ -29,38 +29,20 @@ export default class CallDispositionPlugin extends FlexPlugin {
     //   .Content
     //   .add(<CustomTaskListContainer key="CallDispositionPlugin-component" />, options);
 
-    flex.AgentDesktopView.Panel1.Content.add(<DispositionDialog
-      key="disposition-modal"
-    />, { sortOrder: 100 });
+    flex.AgentDesktopView.Panel1.Content.add(<DispositionDialog key="disposition-modal" />, { sortOrder: 100 });
 
-
-    manager.workerClient.on("reservationCreated", reservation => {
-      console.log('reservationCreated: ', reservation);
-      const isVoiceQueue = reservation.task.taskChannelUniqueName === 'voice';
-      const isInboundTask = reservation.task.attributes.direction === 'inbound';
-      //Register listener for reservation wrapup event
-      if (isVoiceQueue) {
-        reservation.on('wrapup', reservation => {
-          Actions.invokeAction('SetComponentState', {
-            name: 'DispositionDialog',
-            state: { isOpen: true }
-          });
+    flex.Actions.addListener('beforeCompleteTask', async ({ task }) => {
+      const { attributes } = task;
+      console.log('@@@attributes', attributes);
+      if (attributes.reasonsUnselected || attributes.reasonsSelected) {
+        console.log('@@@ok');
+        Actions.invokeAction('SetComponentState', {
+          name: 'DispositionDialog',
+          state: { isOpen: true, reasonsUnselected: attributes.reasonsUnselected, reasonsSelected: attributes.reasonsSelected },
         });
-
       }
-      
     });
-
-
-
-
-
-
-
-
-
   }
-
 
   /**
    * Registers the plugin reducers
