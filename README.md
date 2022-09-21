@@ -1,6 +1,10 @@
+# Screenshot
+
+<img width="793" alt="image" src="https://user-images.githubusercontent.com/1012787/191533089-bf4f1e04-8372-4744-9173-f59b49544ac8.png">
+
 # What
 
-This is a fork to update the source-code to Flex 2.0
+This is a fork of [this original repo](https://github.com/aestellwag/plugin-call-disposition) to update the source-code to Flex 2.0
 
 If you need to run this Plugin under Flex 1.x, go to branch `flex-1.x`.
 
