@@ -54,13 +54,13 @@ When you make changes to your code, the browser window will be automatically ref
 When you are ready to deploy your plugin, in your terminal run:
 
 ```bash
-npm run deploy
+twilio flex:plugins:deploy --changelog "deploying plugin"
 ```
 
-This will publish your plugin as a Private Asset that is accessible by the Functions & Assets API. If you want to deploy your plugin as a Public Asset, you may pass --public to your deploy command:
+Then later execute the command that will show in the console, something like:
 
 ```bash
-npm run deploy --public
+twilio flex:plugins:release --plugin ......
 ```
 
 For more details on deploying your plugin, refer to the [deploying your plugin guide](https://www.twilio.com/docs/flex/plugins#deploying-your-plugin).
